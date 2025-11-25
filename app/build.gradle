@@ -1,14 +1,21 @@
 apply plugin: 'com.android.application'
 
 android {
-    namespace 'com.example.android.notepad'
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    namespace = 'com.example.android.notepad'
+    /**
+     * 设置编译SDK版本为33，满足AndroidX依赖并减少需要下载的组件
+     */
+    compileSdk 33
 
     defaultConfig {
         applicationId "com.example.android.notepad"
-        minSdkVersion 11
-        targetSdkVersion 23
+        /**
+         * 设置最小与目标SDK版本，目标33以避免下载34平台
+         */
+        minSdk 21
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
 
         testApplicationId "com.example.android.notepad.tests"
         testInstrumentationRunner "android.test.InstrumentationTestRunner"
@@ -20,4 +27,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
 }
